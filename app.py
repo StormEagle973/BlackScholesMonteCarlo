@@ -12,7 +12,7 @@ import secrets
 app = Flask(__name__)
 app.config['SESSION_PERMANENT'] = False
 app.secret_key = secrets.token_hex(32)
-class test:
+class main:
     def __init__(self, asset_price = 100.00, strike_price= 100.00, time_to_mature = 1.00, volatility = 0.2, risk_free = 0.05, div_yield = 0.00, nv = 10000,
                  spmin = 0.8, spmax = 1.2, hmp = "time_to_mature", pmin = 0, pmax = 1
                   ):
@@ -178,7 +178,7 @@ def clear_session():
 
 @app.route("/",methods=['POST','GET','POSTH'])
 def hello_world():
-    a=test()
+    a=main()
     heatmap_call, heatmap_put, monte_hist, monte_dist, mc,mp = None, None, None, None, None, None
     mc,mp, monte_hist,monte_dist = a.calcMC()
     heatmap_call, heatmap_put = a.heatmap()
@@ -201,4 +201,4 @@ def hello_world():
         heatmap_call, heatmap_put = a.heatmap()
 
 
-    return render_template('index.html',sss = a, heatmap_call= heatmap_call, heatmap_put = heatmap_put, monte_hist=monte_hist, monte_dist=monte_dist, mc=mc,mp=mp)
+    return render_template('index.html',a = a, heatmap_call= heatmap_call, heatmap_put = heatmap_put, monte_hist=monte_hist, monte_dist=monte_dist, mc=mc,mp=mp)
