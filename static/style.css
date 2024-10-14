@@ -1,0 +1,141 @@
+#frames{
+    display: flex;
+    flex-direction: row;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    
+    
+}
+#dframes{
+    flex-direction: column;
+}
+@media screen and (max-width: 1960px) {
+    #frames{
+        flex-direction: column;
+    }
+  }
+#mcframe{
+    text-align: center;
+}
+#bsframe{
+    text-align: center;
+}
+#inputs{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top:-20px;
+    border-radius: 10px;
+    padding-left: 10px;
+    
+    padding-bottom: 10px;
+   
+}
+#pricedisplay{
+    display: flex;
+    flex-direction: row;
+}
+
+#pricec{
+    color: rgb(19,115,51);
+    
+    width: 700px;
+    height: 50px;
+    background-color: rgb(230,244,234);
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 35px;
+    margin-right: 35px;
+}
+
+#pricep{
+    color: rgb(165,14,14);
+    
+    width: 700px;
+    height: 50px;
+    background-color: rgb(252,232,230);
+    border-radius: 10px;
+    text-align: center
+}
+#pheader{
+    margin: 0;
+    margin-top: 3px;
+}
+
+#pprice{
+    margin: 0;
+    margin-top: 0px;
+    font-weight: 300;
+}
+
+#ilabel{
+    font-weight: normal;
+    position: relative;
+ 
+    top: 12px;
+}
+
+input{
+    border-color: transparent;
+    background-color:rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    width: 200px;
+    height:20px;
+}
+#hmslabel{
+    margin-bottom: -10px;
+}
+
+
+
+#submit {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 0px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+  height: 30px;
+  margin-top: 10px;
+}
+
+#submit:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+#submit:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+#dframes{
+    position: relative;
+    top: -20px
+}
+
+@media screen and (min-width: 1635px) {
+    #img2{
+        position: relative;
+        left: -40px;
+    }
+}

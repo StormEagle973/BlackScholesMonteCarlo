@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <title>Document</title>
+        
+    </head>
+    <body>
+    <div id="frames">
+       <div id = 'inputs'>
+        <form action="/" method='POST' >
+            <h3 id="hmslabel">Contract Parameters</h3>
+            <h3 id="ilabel">Asset Price (AP)</h3>
+            <input value={{'%.2f' % sss.asset_price}} step=" .01" type="number" name="asset_price" id="ap"   >
+            <h3 id="ilabel">Strike Price</h3>
+            <input value={{'%.2f' % sss.strike_price}} type="number" name="strike_price" id="sp"  >
+            <h3 id="ilabel">Time to Maturity</h3>
+            <input value={{'%.2f' % sss.time_to_mature}} type="number" name="time_to_mature" id="tm"  >
+            <h3 id="ilabel">Volatility</h3>
+            <input value={{'%.2f' % sss.volatility}}  step=".01" type="number" name="volatility" id="v"  >
+            <h3 id="ilabel">Risk-Free Interest Rate</h3>
+            <input value={{'%.2f' % sss.risk_free}} type="number" name="risk_free" id="RF"  >
+            <h3 id="ilabel">Dividend Yield</h3>
+            <input value={{'%.2f' % sss.div_yield}} type="number" name="div_yield" id="dy"  >
+            <h3 id="ilabel">Monte Carlo n-value</h3>
+            <input value={{sss.nv}} type="number" name="nval" id="nval"  >
+            <br/>
+           
+            <h3 id="hmslabel">Heatmap Settings</h3>
+            <h3 id="ilabel">Spot Min (min*AP)</h3>
+            <input value={{'%.2f' % sss.spmin}} type="number" name="spmin" id="spmin"  >
+            <h3 id="ilabel">Spot Max (max*AP)</h3>
+            <input value={{'%.2f' % sss.spmax}} type="number" name="spmax" id="spmax"  >
+            <h3 id="ilabel">Heatmap Parameter </h3>
+            <select  name = 'hmp' >
+                <option value="time_to_mature" {% if sss.hmp == 'tm' %}selected{% endif %}>Time to Maturtity</option>
+                <option value="volatility" {% if sss.hmp == 'v' %}selected{% endif %}>Volatility</option>
+                <option value="risk_free" {% if sss.hmp == 'RF' %}selected{% endif %}>Risk-Free Interest Rate</option>
+                <option value="div_yield"{% if sss.hmp == 'dy' %}selected{% endif %}>Dividend Yield</option>
+                
+            </select>
+            <h3 id="ilabel">Parameter min</h3>
+            <input value={{'%.2f' % sss.pmin}} type="number" name="pmin" id="pmin"  >
+            <h3 id="ilabel">Parameter max</h3>
+            <input value={{'%.2f' % sss.pmax}} type="number" name="pmax" id="pmax"  >
+            <br/>
+            <input id='submit' type="submit" value="Update">
+        </form>
+        <form action="/" method='POSTH' >
+            
+            </form>
+       </div>
+       <div id="dframes">
+       <div id="bsframe">
+
+        <h1 id="sectitle">Black Scholes Pricing</h1>
+        <div id="pricedisplay">
+            <div id="pricec">
+                <h3 id="pheader">Call Price</h3>
+                <h3 id="pprice">{{'%.2f' % sss.calcBS()[0]}}</h3>
+            </div>
+           
+            <div id="pricep">
+                <h3 id="pheader">Put Price</h3>
+                <h3 id="pprice">{{'%.2f' % sss.calcBS()[1]}}</h3>
+            </div>
+        </div>
+        <img src="data:image/png;base64,{{ heatmap_call }}" alt="Heatmap">
+        <img id='img2' src="data:image/png;base64,{{ heatmap_put }}" alt="Heatmap">
+       </div>
+       <div id= "mcframe">
+        <h1 id="sectitle">Monte Carlo Simulation</h1>
+        
+        <div id="pricedisplay">
+            <div id="pricec">
+                <h3 id="pheader">Call Price</h3>
+                <h3 id="pprice">{{'%.2f' % mc}}</h3>
+            </div>
+            <div id="pricep">
+                <h3 id="pheader">Put Price</h3>
+                <h3 id="pprice">{{'%.2f' % mp}}</h3>
+            </div>
+        </div>
+        <img src="data:image/png;base64,{{ monte_hist }}" alt="Heatmap">
+        <img id='img2' src="data:image/png;base64,{{ monte_dist }}" alt="Heatmap">
+        
+       </div>
+    </div>
+    </div>
+       
+       
+        <h1></h1>
+        
+       
+        
+    </body>
+
+</html>
