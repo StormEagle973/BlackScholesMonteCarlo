@@ -6,14 +6,31 @@
     
     
 }
+
 #dframes{
     flex-direction: column;
 }
-@media screen and (max-width: 1960px) {
+@media screen and (max-width: 1855px) {
+    body{
+        zoom: 90%;
+    }
+  }
+  @media screen and (max-width: 1665px) {
+    body{
+        zoom: 85%;
+    }
+  }
+  @media screen and (max-width: 1565px) {
+    body{
+        zoom: 80%;
+    }
+  }
+  @media screen and (max-width: 1450px) {
     #frames{
         flex-direction: column;
     }
-  }
+}
+
 #mcframe{
     text-align: center;
 }

@@ -17,38 +17,38 @@
         <form action="/" method='POST' >
             <h3 id="hmslabel">Contract Parameters</h3>
             <h3 id="ilabel">Asset Price (AP)</h3>
-            <input value={{'%.2f' % sss.asset_price}} step=" .01" type="number" name="asset_price" id="ap"   >
+            <input value={{'%.2f' % a.asset_price}} step=" .01" type="number" name="asset_price" id="ap"   >
             <h3 id="ilabel">Strike Price</h3>
-            <input value={{'%.2f' % sss.strike_price}} type="number" name="strike_price" id="sp"  >
+            <input value={{'%.2f' % a.strike_price}} type="number" name="strike_price" id="sp"  >
             <h3 id="ilabel">Time to Maturity</h3>
-            <input value={{'%.2f' % sss.time_to_mature}} type="number" name="time_to_mature" id="tm"  >
+            <input value={{'%.2f' % a.time_to_mature}} type="number" name="time_to_mature" id="tm"  >
             <h3 id="ilabel">Volatility</h3>
-            <input value={{'%.2f' % sss.volatility}}  step=".01" type="number" name="volatility" id="v"  >
+            <input value={{'%.2f' % a.volatility}}  step=".01" type="number" name="volatility" id="v"  >
             <h3 id="ilabel">Risk-Free Interest Rate</h3>
-            <input value={{'%.2f' % sss.risk_free}} type="number" name="risk_free" id="RF"  >
+            <input value={{'%.2f' % a.risk_free}} type="number" name="risk_free" id="RF"  >
             <h3 id="ilabel">Dividend Yield</h3>
-            <input value={{'%.2f' % sss.div_yield}} type="number" name="div_yield" id="dy"  >
+            <input value={{'%.2f' % a.div_yield}} type="number" name="div_yield" id="dy"  >
             <h3 id="ilabel">Monte Carlo n-value</h3>
-            <input value={{sss.nv}} type="number" name="nval" id="nval"  >
+            <input value={{a.nv}} type="number" name="nval" id="nval"  >
             <br/>
            
             <h3 id="hmslabel">Heatmap Settings</h3>
             <h3 id="ilabel">Spot Min (min*AP)</h3>
-            <input value={{'%.2f' % sss.spmin}} type="number" name="spmin" id="spmin"  >
+            <input value={{'%.2f' % a.spmin}} type="number" name="spmin" id="spmin"  >
             <h3 id="ilabel">Spot Max (max*AP)</h3>
-            <input value={{'%.2f' % sss.spmax}} type="number" name="spmax" id="spmax"  >
+            <input value={{'%.2f' % a.spmax}} type="number" name="spmax" id="spmax"  >
             <h3 id="ilabel">Heatmap Parameter </h3>
             <select  name = 'hmp' >
-                <option value="time_to_mature" {% if sss.hmp == 'tm' %}selected{% endif %}>Time to Maturtity</option>
-                <option value="volatility" {% if sss.hmp == 'v' %}selected{% endif %}>Volatility</option>
-                <option value="risk_free" {% if sss.hmp == 'RF' %}selected{% endif %}>Risk-Free Interest Rate</option>
-                <option value="div_yield"{% if sss.hmp == 'dy' %}selected{% endif %}>Dividend Yield</option>
+                <option value="time_to_mature" {% if a.hmp == 'tm' %}selected{% endif %}>Time to Maturtity</option>
+                <option value="volatility" {% if a.hmp == 'v' %}selected{% endif %}>Volatility</option>
+                <option value="risk_free" {% if a.hmp == 'RF' %}selected{% endif %}>Risk-Free Interest Rate</option>
+                <option value="div_yield"{% if a.hmp == 'dy' %}selected{% endif %}>Dividend Yield</option>
                 
             </select>
             <h3 id="ilabel">Parameter min</h3>
-            <input value={{'%.2f' % sss.pmin}} type="number" name="pmin" id="pmin"  >
+            <input value={{'%.2f' % a.pmin}} type="number" name="pmin" id="pmin"  >
             <h3 id="ilabel">Parameter max</h3>
-            <input value={{'%.2f' % sss.pmax}} type="number" name="pmax" id="pmax"  >
+            <input value={{'%.2f' % a.pmax}} type="number" name="pmax" id="pmax"  >
             <br/>
             <input id='submit' type="submit" value="Update">
         </form>
@@ -63,12 +63,12 @@
         <div id="pricedisplay">
             <div id="pricec">
                 <h3 id="pheader">Call Price</h3>
-                <h3 id="pprice">{{'%.2f' % sss.calcBS()[0]}}</h3>
+                <h3 id="pprice">{{'%.2f' % a.calcBS()[0]}}</h3>
             </div>
            
             <div id="pricep">
                 <h3 id="pheader">Put Price</h3>
-                <h3 id="pprice">{{'%.2f' % sss.calcBS()[1]}}</h3>
+                <h3 id="pprice">{{'%.2f' % a.calcBS()[1]}}</h3>
             </div>
         </div>
         <img src="data:image/png;base64,{{ heatmap_call }}" alt="Heatmap">
